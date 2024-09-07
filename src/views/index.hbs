@@ -8,13 +8,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/img/HotelInicio.jpg" class="d-block w-100" alt="Hotel Image 1">
+                        <img src="/img/L1.jpeg" class="d-block w-100" alt="Hotel Image 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/HotelInicio.jpg" class="d-block w-100" alt="Hotel Image 2">
+                        <img src="/img/L2.jpeg" class="d-block w-100" alt="Hotel Image 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/HotelInicio.jpg" class="d-block w-100" alt="Hotel Image 3">
+                        <img src="/img/L3.jpeg" class="d-block w-100" alt="Hotel Image 3">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -27,36 +27,75 @@
                 </button>
             </div> 
         </section>
-        <div class="row mb-5"></div>
-                <div class="col-md-8 offset-md-2">
+        <hr>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-10 offset-md-1">
                     <h5 style="color:#2C3E50;"><strong>Encuentra tu estancia perfecta.</strong></h5>    
-                    <form style="display:">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name" required>
+                    <form class="search-form">
+                        <div class="form-group">
+                            <label for="destino" class="form-label">Destino</label>
+                            <input type="text" class="form-control" id="destino" placeholder="Destino" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" required>
+                        <div class="form-group">
+                            <label for="invitados" class="form-label">Número de invitados</label>
+                            <input type="number" class="form-control" id="invitados" placeholder="Número de invitados" min="1" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="phone">
+                        <div class="form-group">
+                            <label for="checkin" class="form-label">Check-In</label>
+                            <input type="date" class="form-control" id="checkin" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mensaje</label>
-                            <input type="text" class="form-control" id="message">
+                        <div class="form-group">
+                            <label for="checkout" class="form-label">Check-Out</label>
+                            <input type="date" class="form-control" id="checkout" required>
                         </div>
                     </form>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" style="color: #EAEAEA; background-color:#9B59B6;" class="btn">Buscar</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <hr>
         <div class="container">
             <div class="row mb-5">
+                <h5 style="color:#2C3E50;"><strong>Destinos en Tendencia</strong></h5>    
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/HotelInicio.jpg" class="card-img-top" alt="Hotel Feature 1">
+                        <img src="/img/Hotel1.jpeg" class="card-img-top" alt="Hotel Feature 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Feature 1</h5>
+                            <p class="card-text">Description of the first feature of our hotel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/img/Hotel2.jpeg" class="card-img-top" alt="Hotel Feature 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Feature 2</h5>
+                            <p class="card-text">Description of the second feature of our hotel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/img/Hotel3.jpeg" class="card-img-top" alt="Hotel Feature 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Feature 3</h5>
+                            <p class="card-text">Description of the third feature of our hotel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row mb-5">
+                <h5 style="color:#2C3E50;"><strong>Ofertas Especiales</strong></h5>    
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/img/Hotel4.jpeg" class="card-img-top" alt="Hotel Feature 1">
                         <div class="card-body">
                             <h5 class="card-title">Feature 1</h5>
                             <p class="card-text">Description of the first feature of our hotel.</p>
@@ -83,53 +122,72 @@
                 </div>
             </div>     
         </div>
-
+        <hr>
         <div class="container">
             <div class="row mb-5">
+            <h5 style="color:#2C3E50;"><strong>¿Por qué elegirnos?</strong></h5>    
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/HotelInicio.jpg" class="card-img-top" alt="Hotel Feature 1">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 1</h5>
-                            <p class="card-text">Description of the first feature of our hotel.</p>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/HotelInicio.jpg" class="card-img-top" alt="Hotel Feature 2">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 2</h5>
-                            <p class="card-text">Description of the second feature of our hotel.</p>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/HotelInicio.jpg" class="card-img-top" alt="Hotel Feature 3">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 3</h5>
-                            <p class="card-text">Description of the third feature of our hotel.</p>
-                        </div>
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="/hoteld" class="btn btn-primary">Ver Hotel</a>                        </div>
                     </div>
                 </div>
-            </div>     
+            </div>
         </div>
     </main>
 
-        <style>
-        #hero {
-            height: 60vh;
-            overflow: hidden;
+<style>
+ #hero {
+        height: 60vh;
+        overflow: hidden;
+    }
+    #hero .carousel-item img {
+        object-fit: cover;
+        object-position: center;
+        height: 60vh;
+        width: 100%;
+    }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+    hr {
+        border: 5px solid #EAEAEA; 
+    }
+    .mb-3 {
+        margin-bottom: 1rem; 
+    }
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
-        #hero .carousel-item img {
-            object-fit: cover;
-            object-position: center;
-            height: 60vh;
+        .search-form .form-group {
             width: 100%;
         }
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-    </style>
+</style>

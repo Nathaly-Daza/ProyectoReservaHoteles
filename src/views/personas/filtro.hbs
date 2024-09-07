@@ -1,0 +1,158 @@
+<main class="container">
+  <div class="row">
+    <!-- Sidebar: Filtro -->
+    <div class="col-md-3">
+      <div class="filtro-sidebar">
+        <h3>Filtro</h3>
+        <div class="filtro-seccion">
+          <h4>Rango de Precio</h4>
+          <input type="text" class="form-control" placeholder="Rango de precio">
+        </div>
+        <div class="filtro-seccion">
+          <h4>Rango de Estrellas</h4>
+          <ul>
+            <li><input type="checkbox"> 1 Estrella</li>
+            <li><input type="checkbox"> 2 Estrellas</li>
+            <li><input type="checkbox"> 3 Estrellas</li>
+            <li><input type="checkbox"> 4 Estrellas</li>
+            <li><input type="checkbox"> 5 Estrellas</li>
+          </ul>
+        </div>
+        <div class="filtro-seccion">
+          <h4>Actividades</h4>
+          <ul>
+            <li><input type="checkbox"> Actividad 1</li>
+            <li><input type="checkbox"> Actividad 2</li>
+            <li><input type="checkbox"> Actividad 3</li>
+          </ul>
+        </div>
+        <div class="filtro-seccion">
+          <h4>Orientación Sexual</h4>
+          <ul>
+            <li><input type="checkbox"> Orientación 1</li>
+            <li><input type="checkbox"> Orientación 2</li>
+            <li><input type="checkbox"> Orientación 3</li>
+          </ul>
+        </div>
+        <div class="filtro-seccion">
+          <h4>Tipo de Alojamiento</h4>
+          <input type="text" class="form-control" placeholder="All">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content: Resultado -->
+    <div class="col-md-9">
+      <div class="search-bar">
+        <label for="search">Filtro:</label>
+        <input type="text" id="search" class="form-control" placeholder="Buscar...">
+      </div>
+      <div class="resultados">
+        <div class="hotel-card">
+          <img src="/img/Hotel4.jpeg" alt="Hotel Image">
+          <div class="hotel-info">
+            <h5>Hotel Bahamas</h5>
+            <p>Rango de estrellas</p>
+            <p>Descripción</p>
+            <p>Precio: $100.000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<style>
+    /* General */
+body {
+  background-color: #EAEAEA;
+  color: #2C3E50;
+}
+
+.container {
+  background-color: #F5F5F5;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filtro-sidebar {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-sidebar h3 {
+  color: #512DA8;
+  text-align: center;
+}
+
+.filtro-seccion h4 {
+  color: #512DA8;
+  margin-bottom: 10px;
+}
+
+.filtro-seccion ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filtro-seccion ul li {
+  margin-bottom: 10px;
+}
+
+/* Form elements */
+.filtro-sidebar input[type="text"],
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.hotel-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.hotel-card img {
+  width: 50%;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 20px;
+}
+
+.hotel-info h5 {
+  color: #512DA8;
+}
+
+.hotel-info p {
+  margin: 5px 0;
+}
+
+.btn-primary {
+  background-color: #512DA8;
+  border-color: #512DA8;
+}
+
+
+</style>

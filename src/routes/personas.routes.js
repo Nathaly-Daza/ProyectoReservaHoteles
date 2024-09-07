@@ -69,4 +69,13 @@ router.post('/delete/:id', async (req, res) => {
     }
 });
 
+router.get('/hoteld', (req, res) => {
+    res.render('personas/hoteld');
+});
+
+router.get('/filtro', (req, res) => {
+    res.render('personas/filtro');
+});
+
+
 export default router;
