@@ -77,5 +77,29 @@ router.get('/filtro', (req, res) => {
     res.render('personas/filtro');
 });
 
+router.get('/Favoritos', (req, res) => {
+    res.render('personas/Favoritos');
+});
+
+router.get('/Reservas', (req, res) => {
+    res.render('personas/Reservas');
+});
+
+router.get('/Reservar', (req, res) => {
+    res.render('personas/Reservar');
+});
+router.get('/inicioSesion', (req, res) => {
+    res.render('personas/inicioSesion');
+});
+ 
+router.get('/crearSesion', (req, res) => {
+    res.render('personas/crearSesion');
+});
+ 
+router.get('/ofertas', (req, res) => {
+    res.render('personas/ofertas');
+});
+ 
+
 
 export default router;

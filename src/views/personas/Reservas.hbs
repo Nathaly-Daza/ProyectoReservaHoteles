@@ -1,0 +1,71 @@
+<main>
+    <!-- Contenedor principal del cuerpo de la página -->
+<div class="main-container">
+  <!-- Sección de mensaje principal de reservas -->
+  <section class="no-reservations">
+    <h2>Ups! Aún no tienes ninguna reserva</h2>
+    <p>No esperes más... reserva ya...</p>
+    <button class="btn-recommendations">Recomendaciones</button>
+  </section>
+
+  <!-- Sección de la imagen en el lado derecho -->
+  <div class="image-section">
+    <img src="/src/public/img/sitioturistico reservas.jpeg" alt="Imagen de un destino turístico" />
+  </div>
+</div>
+
+<style>
+  /* Estilo para el contenedor principal */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #D6A2E8; /* Lila Suave para fondo principal */
+  padding: 40px;
+  height: 80vh;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la sección de reservas (lado izquierdo) */
+.no-reservations {
+  text-align: center;
+  color: #FFFFFF; /* Blanco para el texto */
+  max-width: 50%;
+}
+
+.no-reservations h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #2C3E50; /* Negro para texto principal */
+}
+
+.no-reservations p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: #2C3E50; /* Negro para texto principal */
+}
+
+.btn-recommendations {
+  background-color: #9B59B6; /* Lavanda Oscura para botones */
+  border: none;
+  color: #FFFFFF; /* Blanco para el texto del botón */
+  padding: 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-recommendations:hover {
+  background-color: #8845A5; /* Color más oscuro en hover */
+}
+
+/* Estilo para la sección de la imagen (lado derecho) */
+.image-section img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+}
+
+</style>
+</main>

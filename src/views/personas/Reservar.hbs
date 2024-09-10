@@ -1,0 +1,205 @@
+<main>
+    <!-- Primera sección: Imagen estática -->
+    <section id="hero" class="mb-5">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/top 10 hotel.jpeg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<hr>
+    <div class="hotel-container">
+        <h1 class="hotel-title">Estás a un paso de conseguir tu mejor hotel!</h1>
+        
+        <div class="hotel-date-selection">
+            <div class="hotel-input-group">
+                <label for="checkin">Día de ingreso:</label>
+                <div class="hotel-calendar">
+                    <p>Mon, Aug 17</p>
+                </div>
+            </div>
+
+            <div class="hotel-input-group">
+                <label for="checkout">Día de salida:</label>
+                <div class="hotel-calendar">
+                    <p>Mon, Aug 17</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hotel-payment-section">
+            <label for="price">Tu precio será:</label>
+            <input type="text" id="price" class="hotel-price-input" placeholder="$________" disabled>
+
+            <button class="hotel-reserve-btn">Reservar</button>
+        </div>
+
+        <div class="hotel-payment-method">
+            <p>Realiza tu pago con:</p>
+            <img src="/src/public/img/" alt="PSE logo" class="hotel-pse-logo">
+        </div>
+    </div>
+<hr>
+        <!-- sección: Recomendaciones -->
+    <section id="favoritos" class="container">
+        <div class="row mb-5">
+            <h5 style="color:#2C3E50;"><strong>Recomendaciones</strong></h5>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="/img/Hotel1.jpeg" class="card-img-top" alt="Recomendación 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Recomendación 1</h5>
+                        <p class="card-text">Descripción de la primera recomendación del hotel.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="/img/Hotel2.jpeg" class="card-img-top" alt="Recomendación 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Recomendación 2</h5>
+                        <p class="card-text">Descripción de la segunda recomendación del hotel.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="/img/Hotel3.jpeg" class="card-img-top" alt="Recomendación 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Recomendación 3</h5>
+                        <p class="card-text">Descripción de la tercera recomendación del hotel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<style>
+ /* Estilos para la primera sección: Imagen estática */
+#hero {
+    height: 60vh;
+    overflow: hidden;
+}
+#hero .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 60vh;
+    width: 100%;
+}
+
+/* seccion reservar */
+.hotel-container {
+    background-color: #D6A2E8; /* Lila suave */
+    color: #2C3E50; /* Negro para el texto */
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+/* Estilo para los encabezados */
+.hotel-title {
+    color: #2C3E50; /* Negro para el título */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.hotel-input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2C3E50; /* Negro para etiquetas */
+}
+
+/* Estilo para la sección de selección de fechas */
+.hotel-date-selection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.hotel-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 45%;
+}
+
+.hotel-calendar {
+    background-color: #FFFFFF; /* Fondo blanco */
+    border: 1px solid #EAEAEA; /* Borde gris claro */
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: #2C3E50; /* Texto en negro */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.hotel-calendar p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Estilo para la sección de pago */
+.hotel-payment-section {
+    margin-bottom: 30px;
+}
+
+.hotel-price-input {
+    font-size: 20px;
+    margin-top: 10px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #EAEAEA; /* Borde gris claro */
+    text-align: center;
+    color: #2C3E50; /* Texto en negro */
+    background-color: #FFFFFF; /* Fondo blanco */
+}
+
+/* Estilo para el botón de reservar */
+.hotel-reserve-btn {
+    background-color: #9B59B6; /* Lavanda oscura */
+    color: white; /* Texto blanco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hotel-reserve-btn:hover {
+    background-color: #8E44AD; /* Lavanda oscura más intenso en hover */
+}
+
+/* Estilo para la sección de métodos de pago */
+.hotel-payment-method {
+    margin-bottom: 30px;
+}
+
+.hotel-pse-logo {
+    width: 100px;
+    margin-top: 10px;
+}
+
+/* Estilos para la cuarta sección: Recomendaciones */
+#favoritos .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+hr {
+    border: 5px solid #EAEAEA;
+}
+
+
+</style>
+
+</main>
