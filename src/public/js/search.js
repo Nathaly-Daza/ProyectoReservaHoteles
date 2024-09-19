@@ -1,4 +1,4 @@
-function searchHotels() {
+/*function searchHotels() {
     const destino = document.getElementById('destino').value;
     const invitados = document.getElementById('invitados').value;
     const checkin = document.getElementById('checkin').value;
@@ -41,4 +41,4 @@ function searchHotels() {
     } else {
       document.querySelector('.container').appendChild(resultsContainer);
     }
-  }
+  }*/

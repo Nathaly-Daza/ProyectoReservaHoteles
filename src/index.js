@@ -60,7 +60,7 @@ app.get('/search', async (req, res) => {
     try {
         const { destino } = req.query;
         const query = `
-            SELECT hotels.name, hotels.address
+            SELECT hotels.name, hotels.address, hotels.price, hotels.category, hotels.accommodation_type, hotels.description
             FROM hotels
             JOIN cities ON hotels.city_id = cities.id
             WHERE cities.name = ?

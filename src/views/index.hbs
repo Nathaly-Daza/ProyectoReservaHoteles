@@ -216,7 +216,7 @@
                     $('#hotels-list').empty();
                     if (data.length > 0) {
                         data.forEach(function(hotel) {
-                            $('#hotels-list').append(`<div class="card mb-3"><div class="card-body"><h5 class="card-title">${hotel.name}</h5><p class="card-text">${hotel.address}</p></div></div>`);
+                            $('#hotels-list').append(`<div class="card mb-3"><div class="card-body"><h5 class="card-title">${hotel.name}</h5><p class="card-text">${hotel.address}</p><p class="card-text">Precio por persona: ${hotel.price}</p><p class="card-text">Categoria: ${hotel.category}</p><p class="card-text">Tipo de alojamiento: ${hotel.accommodation_type}</p><p class="card-text">Descripción: ${hotel.description}</p></div></div>`);
                         });
                     } else {
                         $('#hotels-list').html('<p>No se encontraron hoteles.</p>');
