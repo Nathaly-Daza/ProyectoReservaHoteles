@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import pool from '../database.js';
 
+
 const router = Router();
 
 router.get('/add', async (req, res) => {
@@ -99,7 +100,21 @@ router.get('/crearSesion', (req, res) => {
 router.get('/ofertas', (req, res) => {
     res.render('personas/ofertas');
 });
- 
 
+router.get('/search', async (req, res) => {
+    try {
+        const { destino } = req.query;
+        const query = `
+            SELECT hotels.name, hotels.address
+            FROM hotels
+            JOIN cities ON hotels.city_id = cities.id
+            WHERE cities.name = ?
+        `;
+        const [results] = await pool.query(query, [destino]);
+        res.json(results);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 export default router;

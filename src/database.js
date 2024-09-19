@@ -4,9 +4,9 @@ import { createPool } from "mysql2/promise";
     port:'3306',
     user:'root',
     driver: "MySQL",
-    name: "Prueba01",
+    name: "hotel_reservation",
     password:'root',
-    database:'Prueba01',
+    database:'hotel_reservation',
     password: ""
  });
  export default pool;

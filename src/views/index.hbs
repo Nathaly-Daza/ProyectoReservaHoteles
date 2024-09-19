@@ -28,34 +28,32 @@
             </div> 
         </section>
         <hr>
-        <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-10 offset-md-1">
-                    <h5 style="color:#2C3E50;"><strong>Encuentra tu estancia perfecta.</strong></h5>    
-                    <form class="search-form">
-                        <div class="form-group">
-                            <label for="destino" class="form-label">Destino</label>
-                            <input type="text" class="form-control" id="destino" placeholder="Destino" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="invitados" class="form-label">Número de invitados</label>
-                            <input type="number" class="form-control" id="invitados" placeholder="Número de invitados" min="1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="checkin" class="form-label">Check-In</label>
-                            <input type="date" class="form-control" id="checkin" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="checkout" class="form-label">Check-Out</label>
-                            <input type="date" class="form-control" id="checkout" required>
-                        </div>
-                    </form>
+<div class="col-md-10 offset-md-1">
+                <h5 style="color:#2C3E50;"><strong>Encuentra tu estancia perfecta.</strong></h5>    
+                <form id="searchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="destino" class="form-label">Destino</label>
+                        <input type="text" class="form-control" id="destino" placeholder="Destino" required>
+                        <div id="autocomplete-results" class="list-group"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="invitados" class="form-label">Número de invitados</label>
+                        <input type="number" class="form-control" id="invitados" placeholder="Número de invitados" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkin" class="form-label">Check-In</label>
+                        <input type="date" class="form-control" id="checkin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout" class="form-label">Check-Out</label>
+                        <input type="date" class="form-control" id="checkout" required>
+                    </div>
                     <div class="d-flex justify-content-center mt-3">
                         <button type="submit" style="color: #EAEAEA; background-color:#9B59B6;" class="btn">Buscar</button>
                     </div>
-                </div>
+                </form>
+                <div id="hotels-list" class="mt-4"></div>
             </div>
-        </div>
         <hr>
         <div class="container">
             <div class="row mb-5">
@@ -191,3 +189,39 @@
             width: 100%;
         }
 </style>
+<script>
+        $(document).ready(function() {
+            $('#destino').on('input', function() {
+                const query = $(this).val();
+                if (query.length > 2) {
+                    $.get('/autocomplete', { q: query }, function(data) {
+                        $('#autocomplete-results').empty();
+                        data.forEach(function(item) {
+                            $('#autocomplete-results').append(`<a href="#" class="list-group-item list-group-item-action">${item}</a>`);
+                        });
+                    });
+                }
+            });
+
+            $('#autocomplete-results').on('click', 'a', function(e) {
+                e.preventDefault();
+                $('#destino').val($(this).text());
+                $('#autocomplete-results').empty();
+            });
+
+            $('#searchForm').on('submit', function(e) {
+                e.preventDefault();
+                const destino = $('#destino').val();
+                $.get('/search', { destino: destino }, function(data) {
+                    $('#hotels-list').empty();
+                    if (data.length > 0) {
+                        data.forEach(function(hotel) {
+                            $('#hotels-list').append(`<div class="card mb-3"><div class="card-body"><h5 class="card-title">${hotel.name}</h5><p class="card-text">${hotel.address}</p></div></div>`);
+                        });
+                    } else {
+                        $('#hotels-list').html('<p>No se encontraron hoteles.</p>');
+                    }
+                });
+            });
+        });
+</script>
