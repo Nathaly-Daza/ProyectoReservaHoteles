@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import pool from '../database.js';
 
-
 const router = Router();
 
 router.get('/add', async (req, res) => {

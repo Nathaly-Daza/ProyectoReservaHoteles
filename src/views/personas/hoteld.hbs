@@ -320,4 +320,25 @@
                 });
             });
         });
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hotelId = urlParams.get('id');
+
+            if (hotelId) {
+                $.get('/hotel-details', { id: hotelId }, function(hotel) {
+                    if (hotel) {
+                        // Rellenar los detalles del hotel en la página
+                        $('#hotelName').text(hotel.name);
+                        $('#hotelAddress').text(hotel.address);
+                        $('#hotelPrice').text(hotel.price);
+                        $('#hotelCategory').text(hotel.category);
+                        $('#hotelAccommodationType').text(hotel.accommodation_type);
+                        $('#hotelDescription').text(hotel.description);
+                    } else {
+                        // Mostrar mensaje si no se encuentra el hotel
+                        $('#hotelDetails').html('<p>No se encontraron detalles para este hotel.</p>');
+                    }
+                });
+            }
+        });
 </script>

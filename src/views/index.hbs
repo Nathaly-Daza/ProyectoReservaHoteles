@@ -222,13 +222,32 @@
                     $('#hotels-list').empty();
                     if (data.length > 0) {
                         data.forEach(function(hotel) {
-                            $('#hotels-list').append(`<div class="card mb-3"><div class="card-body"><h5 class="card-title">${hotel.name}</h5><p class="card-text">${hotel.address}</p><p class="card-text">Precio por persona: ${hotel.price}</p><p class="card-text">Categoria: ${hotel.category}</p><p class="card-text">Tipo de alojamiento: ${hotel.accommodation_type}</p><p class="card-text">Descripción: ${hotel.description}</p></div></div>`);
+                            $('#hotels-list').append(`
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${hotel.name}</h5>
+                                        <p class="card-text">${hotel.address}</p>
+                                        <p class="card-text">Precio por persona: ${hotel.price}</p>
+                                        <p class="card-text">Categoría: ${hotel.category}</p>
+                                        <p class="card-text">Tipo de alojamiento: ${hotel.accommodation_type}</p>
+                                        <p class="card-text">Descripción: ${hotel.description}</p>
+                                        <button class="btn btn-primary hotel-detail-btn" data-id="${hotel.id}">Ver detalles</button>
+                                    </div>
+                                </div>
+                            `);
+                        });
+
+
+                        $('.hotel-detail-btn').on('click', function() {
+                            const hotelId = $(this).data('id');
+                            window.location.href = `/hoteld?id=${hotelId}`;
                         });
                     } else {
                         $('#hotels-list').html('<p>No se encontraron hoteles.</p>');
                     }
                 });
             });
+
         });
 
     document.getElementById("clearButton").addEventListener("click", function() {
