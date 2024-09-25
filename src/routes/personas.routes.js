@@ -77,8 +77,8 @@ router.get('/filtro', (req, res) => {
     res.render('personas/filtro');
 });
 
-router.get('/Favoritos', (req, res) => {
-    res.render('personas/Favoritos');
+router.get('/favoritos', (req, res) => {
+    res.render('personas/favoritos');
 });
 
 router.get('/Reservas', (req, res) => {

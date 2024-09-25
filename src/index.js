@@ -12,7 +12,28 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Función auxiliar ifCond
 const ifCond = (v1, operator, v2, options) => {
     switch (operator) {
-        // ... tus operadores aquí ...
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
     }
 };
 
@@ -41,7 +62,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.use('/personas', personasRoutes);
+app.use( personasRoutes);
 
 // Endpoints adicionales
 app.get('/autocomplete', async (req, res) => {
