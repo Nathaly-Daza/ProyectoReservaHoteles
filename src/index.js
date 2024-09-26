@@ -81,7 +81,7 @@ app.get('/search', async (req, res) => {
     try {
         const { destino } = req.query;
         const query = `
-            SELECT hotels.name, hotels.address, hotels.price, hotels.category, hotels.accommodation_type, hotels.description
+            SELECT hotels.name, hotels.address, hotels.price, hotels.category, hotels.accommodation_type, hotels.description,hotels.id
             FROM hotels
             JOIN cities ON hotels.city_id = cities.id
             WHERE cities.name = ?
@@ -93,6 +93,7 @@ app.get('/search', async (req, res) => {
         res.status(500).json({ message: 'Error en el servidor' });
     }
 });
+
 
 app.listen(app.get('port'), () =>
     console.log('El server está escuchando en el puerto', app.get('port'))

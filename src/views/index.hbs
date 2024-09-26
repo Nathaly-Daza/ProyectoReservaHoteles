@@ -65,27 +65,27 @@
                 <h5 style="color:#2C3E50;"><strong>Destinos en Tendencia</strong></h5>    
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/Hotel1.jpeg" class="card-img-top" alt="Hotel Feature 1">
+                        <img src="/img/Bogota.jpg" class="card-img-top" alt="Hotel Feature 1">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 1</h5>
+                            <h5 class="card-title">Bogotá</h5>
                             <p class="card-text">Description of the first feature of our hotel.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/Hotel2.jpeg" class="card-img-top" alt="Hotel Feature 2">
+                        <img src="/img/Cali.jpg" class="card-img-top" alt="Hotel Feature 2">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 2</h5>
+                            <h5 class="card-title">Cali</h5>
                             <p class="card-text">Description of the second feature of our hotel.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/Hotel3.jpeg" class="card-img-top" alt="Hotel Feature 3">
+                        <img src="/img/Medellin.jpeg" class="card-img-top" alt="Hotel Feature 3">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 3</h5>
+                            <h5 class="card-title">Medell{in</h5>
                             <p class="card-text">Description of the third feature of our hotel.</p>
                         </div>
                     </div>
@@ -98,27 +98,27 @@
                 <h5 style="color:#2C3E50;"><strong>Ofertas Especiales</strong></h5>    
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/Hotel4.jpeg" class="card-img-top" alt="Hotel Feature 1">
+                        <img src="/img/Bogotah.jpg" class="card-img-top" alt="Hotel Feature 1">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 1</h5>
+                            <h5 class="card-title">Habitación Bogotá</h5>
                             <p class="card-text">Description of the first feature of our hotel.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/HotelInicio.jpg" class="card-img-top" alt="Hotel Feature 2">
+                        <img src="/img/cali.jpeg" class="card-img-top" alt="Hotel Feature 2">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 2</h5>
+                            <h5 class="card-title">Habitación Cali</h5>
                             <p class="card-text">Description of the second feature of our hotel.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="/img/HotelInicio.jpg" class="card-img-top" alt="Hotel Feature 3">
+                        <img src="/img/Medellinh.jpg" class="card-img-top" alt="Hotel Feature 3">
                         <div class="card-body">
-                            <h5 class="card-title">Feature 3</h5>
+                            <h5 class="card-title">Habitación Medellín</h5>
                             <p class="card-text">Description of the third feature of our hotel.</p>
                         </div>
                     </div>
@@ -132,27 +132,24 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
+                            <h5 class="card-title">Reserva segura</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
+                            <h5 class="card-title">24/7 Atención al cliente</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
+                            <h5 class="card-title">Opciones de pago flexibles</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="/hoteld" class="btn btn-primary">Ver Hotel</a>                        </div>
                     </div>
                 </div>
             </div>
@@ -230,13 +227,12 @@
                                         <p class="card-text">Precio por persona: ${hotel.price}</p>
                                         <p class="card-text">Categoría: ${hotel.category}</p>
                                         <p class="card-text">Tipo de alojamiento: ${hotel.accommodation_type}</p>
-                                        <p class="card-text">Descripción: ${hotel.description}</p>                                      
+                                        <p class="card-text">Descripción: ${hotel.description}</p>                                       
                                         <button class="btn btn-primary hotel-detail-btn" data-id="${hotel.id}">Ver detalles</button>
                                     </div>
                                 </div>
                             `);
                         });
-
 
                         $('.hotel-detail-btn').on('click', function() {
                             const hotelId = $(this).data('id');

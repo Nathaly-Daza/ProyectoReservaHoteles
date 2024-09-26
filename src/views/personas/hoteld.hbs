@@ -1,11 +1,9 @@
 <main>
     <section id="hero" class="mb-5">
-        <div id="carouselExampleSlidesOnly" class="carousel slide"
-            data-bs-ride="carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="/img/BannerHotel.jpg" class="d-block w-100"
-                        alt="...">
+                    <img id="hotelBanner" src="/img/Bogota.jpg" class="d-block w-100" alt="Hotel Banner">
                 </div>
             </div>
         </div>
@@ -14,15 +12,15 @@
     <div class="container">
         <div class="row mb-3">
             <div class="col-md-10 offset-md-1 hotel-info">
-                <h5 style="color:#2C3E50;"><strong>Hotel Lleras</strong></h5>
+                <h5 style="color:#2C3E50;"><strong>Hotel Bogotá Plaza</strong></h5>
                 <ul class="p-0">
-                    <li>Calle 88 #25 -14</li>
-                    <li>4.5(50 Reseñas)</li>
+                    <li>Carrera 15 # 100-50</li>
+                    <li> 5</li>
                 </ul>
                 <div class="d-flex justify-content-center mt-3">
-                    <button type="submit"
+                    <a href="/Reservar" type="submit" s
                         style="color: #EAEAEA; background-color:#9B59B6;"
-                        class="btn">Reservar</button>
+                        class="btn">Reservar</a>
                 </div>
             </div>
         </div>
@@ -30,20 +28,16 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="true" href="#"
-                            data-content="info">Descripción</a>
+                        <a class="nav-link active" aria-current="true" href="#" data-content="info">Descripción</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"
-                            data-content="services">Habitaciones</a>
+                        <a class="nav-link" href="#" data-content="services">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"
-                            data-content="location">Actividades</a>
+                        <a class="nav-link" href="#" data-content="location">Actividades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"
-                            data-content="reviews">Reseñas</a>
+                        <a class="nav-link" href="#" data-content="reviews">Reseñas</a>
                     </li>
                 </ul>
             </div>
@@ -70,7 +64,7 @@
                         <div class="row mb-5">
                             <div class="col-md-4 mb-4">
                                 <div class="card h-100">
-                                    <img src="/img/Hotel1.jpeg"
+                                    <img src="/img/Medellinh.jpg"
                                         class="card-img-top"
                                         alt="Hotel Feature 1">
                                     <div class="card-body">
@@ -83,7 +77,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <div class="card h-100">
-                                    <img src="/img/Hotel2.jpeg"
+                                    <img src="/img/Bogotah.jpg"
                                         class="card-img-top"
                                         alt="Hotel Feature 2">
                                     <div class="card-body">
@@ -96,7 +90,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <div class="card h-100">
-                                    <img src="/img/Hotel3.jpeg"
+                                    <img src="/img/cali.jpg"
                                         class="card-img-top"
                                         alt="Hotel Feature 3">
                                     <div class="card-body">
@@ -118,7 +112,7 @@
                         <div class="row mb-5">
                             <div class="col-md-4 mb-4">
                                 <div class="card h-100">
-                                    <img src="/img/Hotel1.jpeg"
+                                    <img src="/img/ac1.jpeg"
                                         class="card-img-top"
                                         alt="Hotel Activity 1">
                                     <div class="card-body">
@@ -130,7 +124,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <div class="card h-100">
-                                    <img src="/img/Hotel2.jpeg"
+                                    <img src="/img/ac2.jpeg"
                                         class="card-img-top"
                                         alt="Hotel Activity 2">
                                     <div class="card-body">
@@ -142,7 +136,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <div class="card h-100">
-                                    <img src="/img/Hotel3.jpeg"
+                                    <img src="/img/ac3.jpeg"
                                         class="card-img-top"
                                         alt="Hotel Activity 3">
                                     <div class="card-body">
@@ -235,8 +229,97 @@
                 </div>
             </div>
         </div>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.nav-link');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const content = this.getAttribute('data-content');
+            document.querySelectorAll('.card-body > div').forEach(div => div.style.display = 'none');
+            document.getElementById(content + 'Content').style.display = 'block';
+        });
+    });
 
-    </main>
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const hotelId = urlParams.get('id');
+
+        if (hotelId) {
+            $.get('/hotel-details', { id: hotelId }, function(hotel) {
+                if (hotel) {
+                    // Rellenar los detalles del hotel en la página
+                    $('#hotelName').text(hotel.name);
+                    $('#hotelAddress').text(hotel.address);
+                    $('#hotelRating').text(`${hotel.rating} (${hotel.reviewCount} Reseñas)`);
+                    $('#hotelDescription').text(hotel.description);
+
+                    // Cambiar imagen del banner
+                    $('#hotelBanner').attr('src', hotel.bannerImage);
+
+                    // Insertar habitaciones
+                    let roomsHtml = '';
+                    hotel.rooms.forEach(room => {
+                        roomsHtml += `
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <img src="${room.image}" class="card-img-top" alt="${room.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${room.name}</h5>
+                                        <p class="card-text">${room.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    $('#hotelRooms').html(roomsHtml);
+
+                    // Insertar actividades
+                    let activitiesHtml = '';
+                    hotel.activities.forEach(activity => {
+                        activitiesHtml += `
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <img src="${activity.image}" class="card-img-top" alt="${activity.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${activity.name}</h5>
+                                        <p class="card-text">${activity.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    $('#hotelActivities').html(activitiesHtml);
+
+                    // Insertar reseñas
+                    let reviewsHtml = '';
+                    hotel.reviews.forEach(review => {
+                        reviewsHtml += `
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${review.author}</h5>
+                                        <p class="card-text">"${review.text}"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    $('#hotelReviews').html(reviewsHtml);
+                } else {
+                    // Mostrar mensaje si no se encuentra el hotel
+                    $('#hotelDetails').html('<p>No se encontraron detalles para este hotel.</p>');
+                }
+            });
+        }
+    });
+});
+
+</script>
+
 
 <style>
         #hero {
@@ -306,42 +389,6 @@
         }
 </style>
 
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.nav-link');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    const content = this.getAttribute('data-content');
-                    document.querySelectorAll('.card-body > div').forEach(div => div.style.display = 'none');
-                    document.getElementById(content + 'Content').style.display = 'block';
-                });
-            });
-        });
-        $(document).ready(function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const hotelId = urlParams.get('id');
-
-            if (hotelId) {
-                $.get('/hotel-details', { id: hotelId }, function(hotel) {
-                    if (hotel) {
-                        // Rellenar los detalles del hotel en la página
-                        $('#hotelName').text(hotel.name);
-                        $('#hotelAddress').text(hotel.address);
-                        $('#hotelPrice').text(hotel.price);
-                        $('#hotelCategory').text(hotel.category);
-                        $('#hotelAccommodationType').text(hotel.accommodation_type);
-                        $('#hotelDescription').text(hotel.description);
-                    } else {
-                        // Mostrar mensaje si no se encuentra el hotel
-                        $('#hotelDetails').html('<p>No se encontraron detalles para este hotel.</p>');
-                    }
-                });
-            }
-        });
-</script>
 
 
 {{!-- 
@@ -423,64 +470,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database'); // Asegúrate de que esto apunte a tu conexión a la base de datos
 
-router.get('/filtro', async (req, res) => {
-    try {
-        const { precio_min, precio_max, estrellas, actividades, orientacion, tipo_alojamiento } = req.query;
-
-        let query = `
-            SELECT hotels.name, hotels.address, hotels.price, hotels.category, hotels.accommodation_type, hotel_photos.photo_url
-            FROM hotels
-            LEFT JOIN hotel_photos ON hotels.id = hotel_photos.hotel_id
-            WHERE 1=1
-        `;
-
-        let queryParams = [];
-
-        // Filtro por rango de precios
-        if (precio_min) {
-            query += ' AND hotels.price >= ?';
-            queryParams.push(precio_min);
-        }
-        if (precio_max) {
-            query += ' AND hotels.price <= ?';
-            queryParams.push(precio_max);
-        }
-
-        // Filtro por estrellas
-        if (estrellas) {
-            const estrellasArray = Array.isArray(estrellas) ? estrellas : [estrellas];
-            query += ' AND hotels.category IN (?)';
-            queryParams.push(estrellasArray);
-        }
-
-        // Filtro por actividades (ajusta según tu base de datos)
-        if (actividades) {
-            const actividadesArray = Array.isArray(actividades) ? actividades : [actividades];
-            query += ' AND EXISTS (SELECT 1 FROM hotel_activities WHERE hotel_activities.hotel_id = hotels.id AND hotel_activities.activity_id IN (?))';
-            queryParams.push(actividadesArray);
-        }
-
-        // Filtro por orientación sexual (ajusta según tu base de datos)
-        if (orientacion) {
-            const orientacionArray = Array.isArray(orientacion) ? orientacion : [orientacion];
-            query += ' AND EXISTS (SELECT 1 FROM user_orientations WHERE user_orientations.hotel_id = hotels.id AND user_orientations.orientation_id IN (?))';
-            queryParams.push(orientacionArray);
-        }
-
-        // Filtro por tipo de alojamiento
-        if (tipo_alojamiento) {
-            query += ' AND hotels.accommodation_type LIKE ?';
-            queryParams.push(`%${tipo_alojamiento}%`);
-        }
-
-        const [results] = await pool.query(query, queryParams);
-
-        res.render('personas/filtro', { hoteles: results });
-    } catch (err) {
-        console.error('Error en el filtro: ', err);
-        res.status(500).json({ message: 'Error en el servidor' });
-    }
-});
 
 module.exports = router;
 
