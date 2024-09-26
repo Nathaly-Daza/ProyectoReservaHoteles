@@ -149,7 +149,6 @@ router.get('/search', async (req, res) => {
  
    
 });
-<<<<<<< HEAD
 
 // Ruta para mostrar los detalles del hotel basado en su ID
 router.get('/hotel/:id', (req, res) => {
@@ -252,44 +251,3 @@ router.get('/filtro', async (req, res) => {
 
 
 export default router;
-=======
- 
-router.get('/crearSesion', (req, res) => {
-    res.render('personas/crearSesion');
-  });
-  // Crear sesión
-  router.post('/crearSesion', async (req, res) => {
-   
-    try {
-        const { nombre, ciudad, telefono, direccion, email, password } = req.body;
-   
-        // Verificar si el usuario ya existe
-        const [existingUser] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
-        console.log(existingUser);
- 
-        if (existingUser.length > 0) {
-            return res.status(400).send('El correo electrónico ya está registrado');
-        }else{
-           
- 
-        // Insertar nuevo usuario en la base de datos
-        await pool.query('INSERT INTO users (nombre, ciudad, telefono, direccion, email, password) VALUES (?, ?, ?, ?, ?, ?)',
-                         [nombre, ciudad, telefono, direccion, email, password]);
- 
-        console.log('Usuario creado exitosamente');
-        res.redirect('/inicioSesion'); // Redirigir después de la creación
- 
-        }
- 
-        // Hash de la contraseña
-       
- 
-    } catch (error) {
-        console.error('Error al crear la cuenta:', error);
-        //res.status(500).send('Error al crear la cuenta');
-    }
-});
- 
-export default router;
- 
->>>>>>> 21aa53be6311207613bf61f0dea1ac736b2119a0
