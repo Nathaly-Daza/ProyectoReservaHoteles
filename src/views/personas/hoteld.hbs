@@ -342,3 +342,146 @@
             }
         });
 </script>
+
+
+{{!-- 
+<main class="container">
+  <div class="row">
+    <!-- Sidebar: Filtro -->
+    <div class="col-md-3">
+      <div class="filtro-sidebar">
+        <h3>Filtro</h3>
+        <form action="/personas/filtro" method="GET">
+          <div class="filtro-seccion">
+            <h4>Rango de Precio</h4>
+            <input type="number" name="precio_min" class="form-control" placeholder="Precio mínimo">
+            <input type="number" name="precio_max" class="form-control" placeholder="Precio máximo">
+          </div>
+          <div class="filtro-seccion">
+            <h4>Rango de Estrellas</h4>
+            <ul>
+              <li><input type="checkbox" name="estrellas" value="1"> 1 Estrella</li>
+              <li><input type="checkbox" name="estrellas" value="2"> 2 Estrellas</li>
+              <li><input type="checkbox" name="estrellas" value="3"> 3 Estrellas</li>
+              <li><input type="checkbox" name="estrellas" value="4"> 4 Estrellas</li>
+              <li><input type="checkbox" name="estrellas" value="5"> 5 Estrellas</li>
+            </ul>
+          </div>
+          <div class="filtro-seccion">
+            <h4>Actividades</h4>
+            <ul>
+              <li><input type="checkbox" name="actividades" value="1"> Actividad 1</li>
+              <li><input type="checkbox" name="actividades" value="2"> Actividad 2</li>
+              <li><input type="checkbox" name="actividades" value="3"> Actividad 3</li>
+            </ul>
+          </div>
+          <div class="filtro-seccion">
+            <h4>Orientación Sexual</h4>
+            <ul>
+              <li><input type="checkbox" name="orientacion" value="1"> Orientación 1</li>
+              <li><input type="checkbox" name="orientacion" value="2"> Orientación 2</li>
+              <li><input type="checkbox" name="orientacion" value="3"> Orientación 3</li>
+            </ul>
+          </div>
+          <div class="filtro-seccion">
+            <h4>Tipo de Alojamiento</h4>
+            <input type="text" name="tipo_alojamiento" class="form-control" placeholder="All">
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main Content: Resultado -->
+    <div class="col-md-9">
+      <div class="search-bar">
+        <label for="search">Filtro:</label>
+        <input type="text" id="search" class="form-control" placeholder="Buscar...">
+      </div>
+      <div class="resultados">
+        <!-- Aquí se mostrarán los resultados -->
+        {{#if hoteles}}
+        {{#each hoteles}}
+        <div class="hotel-card">
+          <img src="{{this.photo_url}}" alt="Hotel Image">
+          <div class="hotel-info">
+            <h5>{{this.name}}</h5>
+            <p>{{this.address}}</p>
+            <p>{{this.category}} estrellas</p>
+            <p>Precio: ${{this.price}}</p>
+          </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <p>No se encontraron resultados</p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</main>
+const express = require('express');
+const router = express.Router();
+const pool = require('../database'); // Asegúrate de que esto apunte a tu conexión a la base de datos
+
+router.get('/filtro', async (req, res) => {
+    try {
+        const { precio_min, precio_max, estrellas, actividades, orientacion, tipo_alojamiento } = req.query;
+
+        let query = `
+            SELECT hotels.name, hotels.address, hotels.price, hotels.category, hotels.accommodation_type, hotel_photos.photo_url
+            FROM hotels
+            LEFT JOIN hotel_photos ON hotels.id = hotel_photos.hotel_id
+            WHERE 1=1
+        `;
+
+        let queryParams = [];
+
+        // Filtro por rango de precios
+        if (precio_min) {
+            query += ' AND hotels.price >= ?';
+            queryParams.push(precio_min);
+        }
+        if (precio_max) {
+            query += ' AND hotels.price <= ?';
+            queryParams.push(precio_max);
+        }
+
+        // Filtro por estrellas
+        if (estrellas) {
+            const estrellasArray = Array.isArray(estrellas) ? estrellas : [estrellas];
+            query += ' AND hotels.category IN (?)';
+            queryParams.push(estrellasArray);
+        }
+
+        // Filtro por actividades (ajusta según tu base de datos)
+        if (actividades) {
+            const actividadesArray = Array.isArray(actividades) ? actividades : [actividades];
+            query += ' AND EXISTS (SELECT 1 FROM hotel_activities WHERE hotel_activities.hotel_id = hotels.id AND hotel_activities.activity_id IN (?))';
+            queryParams.push(actividadesArray);
+        }
+
+        // Filtro por orientación sexual (ajusta según tu base de datos)
+        if (orientacion) {
+            const orientacionArray = Array.isArray(orientacion) ? orientacion : [orientacion];
+            query += ' AND EXISTS (SELECT 1 FROM user_orientations WHERE user_orientations.hotel_id = hotels.id AND user_orientations.orientation_id IN (?))';
+            queryParams.push(orientacionArray);
+        }
+
+        // Filtro por tipo de alojamiento
+        if (tipo_alojamiento) {
+            query += ' AND hotels.accommodation_type LIKE ?';
+            queryParams.push(`%${tipo_alojamiento}%`);
+        }
+
+        const [results] = await pool.query(query, queryParams);
+
+        res.render('personas/filtro', { hoteles: results });
+    } catch (err) {
+        console.error('Error en el filtro: ', err);
+        res.status(500).json({ message: 'Error en el servidor' });
+    }
+});
+
+module.exports = router;
+
+ --}}
