@@ -3,8 +3,7 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken';
  
 import pool from '../database.js';
- 
- 
+
 const router = Router();
 const JWT_SECRET = 'tu_clave_secreta';
 router.get('/add', async (req, res) => {

@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.use( personasRoutes);
+app.use(personasRoutes);
 
 // Endpoints adicionales
 app.get('/autocomplete', async (req, res) => {
