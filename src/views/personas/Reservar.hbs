@@ -15,34 +15,37 @@
     <div class="hotel-container">
         <h1 class="hotel-title">Estás a un paso de conseguir tu mejor hotel!</h1>
         
-        <div class="hotel-date-selection">
-            <div class="hotel-input-group">
-                <label for="checkin">Día de ingreso:</label>
-                <div class="hotel-calendar">
-                    <p>Mon, Aug 17</p>
-                </div>
-            </div>
+           <div class="col-md-10 offset-md-1">
+                <h5 style="color:#2C3E50;"><strong>Encuentra tu estancia perfecta.</strong></h5>    
+                <form id="searchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="destino" class="form-label">Destino</label>
+                        <input type="text" class="form-control" id="destino" placeholder="Destino" required>
+                        <div id="autocomplete-results" class="list-group"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="invitados" class="form-label">Número de invitados</label>
+                        <input type="number" class="form-control" id="invitados" placeholder="Número de invitados" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkin" class="form-label">Check-In</label>
+                        <input type="date" class="form-control" id="checkin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout" class="form-label">Check-Out</label>
+                        <input type="date" class="form-control" id="checkout" required>
+                    </div>
 
-            <div class="hotel-input-group">
-                <label for="checkout">Día de salida:</label>
-                <div class="hotel-calendar">
-                    <p>Mon, Aug 17</p>
-                </div>
-            </div>
+                    <div class="col-md-10 offset-md-1">
+                        <div class="d-flex justify-content-center mt-3">
+                            <button type="submit" style="color: #EAEAEA; background-color:#9B59B6;" class="btn">Reservar</button><br>
+                            <button type="button" class="btn btn-secondary" id="clearButton">Limpiar</button>
+                        </div>
+                    </div>
+                    
+                </form>
+                <div id="hotels-list" class="mt-4"></div>
         </div>
-
-        <div class="hotel-payment-section">
-            <label for="price">Tu precio será:</label>
-            <input type="text" id="price" class="hotel-price-input" placeholder="$________" disabled>
-
-            <button class="hotel-reserve-btn">Reservar</button>
-        </div>
-
-        <div class="hotel-payment-method">
-            <p>Realiza tu pago con:</p>
-            <img src="/src/public/img/" alt="PSE logo" class="hotel-pse-logo">
-        </div>
-    </div>
 <hr>
         <!-- sección: Recomendaciones -->
     <section id="favoritos" class="container">
@@ -54,6 +57,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Recomendación 1</h5>
                         <p class="card-text">Descripción de la primera recomendación del hotel.</p>
+                        <button class="select-hotel-btn">Seleccionar</button> <!-- Botón para seleccionar -->
                     </div>
                 </div>
             </div>
@@ -78,6 +82,21 @@
         </div>
     </section>
 
+<script>
+document.querySelectorAll('.select-hotel-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const card = this.closest('.card'); // Obtener la card más cercana
+        const hotelInfo = {
+            title: card.getAttribute('data-hotel'),
+            description: card.getAttribute('data-description'),
+            image: card.getAttribute('data-image')
+        };
+        // Almacenar la información en localStorage
+        localStorage.setItem('selectedHotel', JSON.stringify(hotelInfo));
+        alert('¡Reserva seleccionada! Ahora puedes verla en "Reservas".');
+    });
+});
+</script>
 
 
 <style>
